@@ -61,7 +61,10 @@ def General_Search(connection_dict, search_method, *args):
         elif search_method == "IDS":
             if idl_depth_limit == 1 and local_flag:
                 print "L =", idl_depth_limit
+                print "Expanded = ", popped[0]
+                print "Queue = ", [popped]
                 local_flag = False
+
             if len(popped) < idl_depth_limit + 1 and 'G' not in popped:
                 opened_nodes = sorted(connection_dict[key_to_expand], reverse = True)
                 for l in opened_nodes:
@@ -72,11 +75,11 @@ def General_Search(connection_dict, search_method, *args):
             elif "G" not in popped:
                 idl_depth_limit +=1
                 l_state_change = True
-                # queue = [['S']]
-                # print "Expanded =", queue[0][0]
-                # print "Queue =", queue
             else:
                 pass
+
+        elif search_method == "":
+            pass
 
         if len(queue):
             print "Expanded = ", queue[0][0]
