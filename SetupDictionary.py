@@ -69,4 +69,8 @@ for i in range(0, len(connection_list)):
 print "Connection Dictionary = \n", connection_dict, "\n"
 # print connection_dict['A'][0][1]
 
-General_Search(connection_dict, "IDS")
+the_list = ["DFS", "BFS", "DLS", "IDS"]
+for item in the_list:
+    print item
+    General_Search(connection_dict, item)
+    print "\n"
