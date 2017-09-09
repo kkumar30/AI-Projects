@@ -72,5 +72,5 @@ print "Connection Dictionary = \n", connection_dict, "\n"
 the_list = ["DFS", "BFS", "DLS", "IDS"]
 for item in the_list:
     print item
-    General_Search(connection_dict, item)
+    General_Search(connection_dict, item, heuristic_dict=heuristic_dict)
     print "\n"

@@ -1,6 +1,6 @@
 from Queue import PriorityQueue
 
-def General_Search(connection_dict, search_method, *args):
+def General_Search(connection_dict, search_method, heuristic_dict):
     queue = [['S']]  # problem.initalState
     safety_count = 0
     local_flag = True #for IDS
@@ -87,14 +87,14 @@ def General_Search(connection_dict, search_method, *args):
         if l_state_change:
             queue = [['S']]
 
-        print_queue_state(queue, connection_dict, search_method, l_state_change, idl_depth_limit)
+        print_queue_state(queue, connection_dict, search_method, l_state_change, idl_depth_limit, heuristic_dict=heuristic_dict)
 
         if l_state_change:
             l_state_change = False
 
         safety_count += 1
 
-def cost_of_path(path, connection_dict):
+def cost_of_path(path, connection_dict, heuristic_dict):
     if len(path) in [0, 1]:
         return 0
     cost = 0
@@ -102,7 +102,7 @@ def cost_of_path(path, connection_dict):
         cost += connection_dict[path[idx][0]][path[idx][1]]
     return cost
 
-def print_queue_state(queue, connection_dict, search_method, l_state_change, idl_depth_limit):
+def print_queue_state(queue, connection_dict, search_method, l_state_change, idl_depth_limit, heuristic_dict):
     if search_method in ["DFS", "BFS", "DLS", "IDS"]:
         if search_method == "IDS":
             if l_state_change:
@@ -116,7 +116,7 @@ def print_queue_state(queue, connection_dict, search_method, l_state_change, idl
         if len(queue) != 0:
             print "Expanded =", queue[0][0]
             if search_method == "UCS":
-                cost_of_paths = [cost_of_path(path, connection_dict) for path in queue]
+                cost_of_paths = [cost_of_path(path, connection_dict, heuristic_dict=heuristic_dict) for path in queue]
                 print "Queue =", [cost_of_paths[idx] + queue[idx] for idx in range(0, len(queue))]
             elif search_method == "A*":
                 pass
