@@ -12,6 +12,7 @@ def General_Search(connection_dict, search_method, heuristic_dict):
     if search_method in ["UCS","GS"]:
         print "Queue =  [0.0",queue[0],"]"
     else:
+        print "Queue =", queue
     if search_method == "IDS":
         print "\n"
     idl_depth_limit = 1
