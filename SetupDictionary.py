@@ -70,9 +70,9 @@ for i in range(0, len(connection_list)):
 print "Connection Dictionary = \n", connection_dict, "\n"
 # print connection_dict['A'][0][1]
 
-the_list = ["DFS", "BFS", "DLS", "IDS", "UCS", "GS"]
+the_list = ["DFS", "BFS", "DLS", "IDS", "UCS", "GS", "A*"]
 # for item in the_list:
 #     print item
 #     General_Search(connection_dict, item, heuristic_dict=heuristic_dict)
 #     print "\n"
-General_Search(connection_dict, "BFS", heuristic_dict=heuristic_dict)
+General_Search(connection_dict, "A*", heuristic_dict=heuristic_dict)
