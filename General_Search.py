@@ -9,7 +9,9 @@ def General_Search(connection_dict, search_method, heuristic_dict):
     if search_method == "IDS":
         print "L = 0"
     print "Expanded = ", queue[0][0]
-    print "Queue = ", queue
+    if search_method in ["UCS","GS"]:
+        print "Queue =  [0.0",queue[0],"]"
+    else:
     if search_method == "IDS":
         print "\n"
     idl_depth_limit = 1
@@ -95,6 +97,42 @@ def General_Search(connection_dict, search_method, heuristic_dict):
                     return -1
             queue.sort(comparator)
 
+        elif search_method == "GS":
+            opened_nodes = sorted(connection_dict[key_to_expand])
+            items_to_insert = []
+            for node in opened_nodes:
+                if node in popped:
+                    continue
+                items_to_insert.append([node]+popped)
+            queue.extend(items_to_insert)
+
+            # def h_comparator(list1, list2):
+            #     if heuristic_cost_of_path(list1, heuristic_dict) > heuristic_cost_of_path(list2, heuristic_dict):
+            #         return 1
+            #     elif heuristic_cost_of_path(list1, heuristic_dict) < heuristic_cost_of_path(list2, heuristic_dict):
+            #         return -1
+            #     else:
+            #         if list1[0] > list2[0]:
+            #             return 1
+            #         return -1
+
+            def h_comparator(list1, list2):
+                if float(heuristic_dict[list1[0]]) > float(heuristic_dict[list2[0]]):
+                    return 1
+                elif float(heuristic_dict[list1[0]]) < float(heuristic_dict[list2[0]]):
+                    return -1
+                else:
+                    if list1[0] == list2[0]:
+                        if len(list1)>len(list2):
+                            return 1
+                        else:
+                            return -1
+
+                    elif list1[0] > list2[0]:
+                        return 1
+                    return -1
+            queue.sort(h_comparator)
+
 
         if l_state_change:
             queue = [['S']]
@@ -111,6 +149,10 @@ def cost_of_path(path, connection_dict):
         cost += float(connection_dict[path[idx]][path[idx + 1]])
     return cost
 
+def heuristic_cost_of_path(path, heuristic_dict):
+    # print type(heuristic_dict[path[0]])
+    return heuristic_dict[path[0]]
+
 
 # To print the queue according to the specific search algorithm
 def print_queue_state(queue, connection_dict, search_method, l_state_change, idl_depth_limit, heuristic_dict):
@@ -123,7 +165,7 @@ def print_queue_state(queue, connection_dict, search_method, l_state_change, idl
         if len(queue) != 0:
             print "Expanded = ", queue[0][0]
             print "Queue = ", queue
-    elif search_method in ["UCS", "A*"]:
+    elif search_method in ["UCS", "GS", "A*"]:
         if len(queue) != 0:
             print "Expanded =", queue[0][0]
 
@@ -132,6 +174,16 @@ def print_queue_state(queue, connection_dict, search_method, l_state_change, idl
                 for idx in range(len(queue)):
                     current_path = queue[idx]
                     current_cost_of_path = cost_of_path(current_path, connection_dict)
+                    string_print = string_print + '<' + str(current_cost_of_path) + '' + str(current_path) + '>, '
+
+                print '[' + string_print[:-2] + ']'
+
+            elif search_method == "GS":
+                string_print = ''
+                for idx in range(len(queue)):
+                    current_path = queue[idx]
+                    # current_cost_of_path = heuristic_dict[current_path[0]]
+                    current_cost_of_path = heuristic_cost_of_path(current_path, heuristic_dict)
                     string_print = string_print + '<' + str(current_cost_of_path) + '' + str(current_path) + '>, '
 
                 print '[' + string_print[:-2] + ']'

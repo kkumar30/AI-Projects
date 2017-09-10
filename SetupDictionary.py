@@ -43,7 +43,8 @@ for i in range(0, len(heuristic_list)):
         heuristic_dict[key].append(value)
     else:
         heuristic_dict[key] = value
-
+    heuristic_dict['G'] = 0.0 #Adding the goal heuristic value as we can assume G will
+    #always be there in the dict
 print "Heuristic Dictionary = \n", heuristic_dict
 connection_dict = {}
 for i in range(0, len(connection_list)):
@@ -69,9 +70,9 @@ for i in range(0, len(connection_list)):
 print "Connection Dictionary = \n", connection_dict, "\n"
 # print connection_dict['A'][0][1]
 
-the_list = ["DFS", "BFS", "DLS", "IDS"]
+the_list = ["DFS", "BFS", "DLS", "IDS", "UCS", "GS"]
 # for item in the_list:
 #     print item
 #     General_Search(connection_dict, item, heuristic_dict=heuristic_dict)
 #     print "\n"
-General_Search(connection_dict, "UCS", heuristic_dict=heuristic_dict)
+General_Search(connection_dict, "BFS", heuristic_dict=heuristic_dict)
