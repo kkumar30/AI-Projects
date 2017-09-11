@@ -12,7 +12,7 @@ else:
 if ".txt" in graph_file:
     changes_txt_file = open(graph_file)
 else:
-    print "Wait! It's not a text file!"
+    print "Wait! It's not a text file!\nEnter a proper text file as the argument. Eg- python runsearch.py Graph.txt"
     exit(0)
 the_read_file = changes_txt_file.readlines()
 
