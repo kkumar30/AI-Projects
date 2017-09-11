@@ -1,11 +1,19 @@
 import numpy
 import os, sys
 from General_Search import General_Search
-
+print "Printing from ", sys.argv[1], "...\n"
 # graph_file = "graph.txt"
 # graph_file = "BonusGraph.txt"
-graph_file = "second_graph.txt"
-changes_txt_file = open(graph_file)
+# graph_file = "second_graph.txt"
+if sys.argv[1]:
+    graph_file = sys.argv[1]
+else:
+    graph_file = "graph.txt"
+if ".txt" in graph_file:
+    changes_txt_file = open(graph_file)
+else:
+    print "Wait! It's not a text file!"
+    exit(0)
 the_read_file = changes_txt_file.readlines()
 
 lines = [line.rstrip(' ') for line in open(graph_file)]
