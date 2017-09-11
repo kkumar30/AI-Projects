@@ -11,7 +11,7 @@ def General_Search(connection_dict, search_method, heuristic_dict):
     if search_method == "IDS":
         print "L = 0"
     print "Expanded = ", queue[0][0]
-    if search_method in ["UCS","GS", "A*", "Beam Search"]:
+    if search_method in ["UCS","GS", "A*", "Beam Search", "HCS"]:
         print "Queue =  [<"+heuristic_dict[queue[0][0]]+ "" + str(queue[0]) +">]"
     else:
         print "Queue =", queue
@@ -151,8 +151,6 @@ def General_Search(connection_dict, search_method, heuristic_dict):
             queue.sort(astar_comparator)
             queue = remove_duplicates(queue)
 
-        elif search_method == "HCS": #Hill climbing search
-            pass
         elif search_method == "Beam Search":
             opened_nodes = sorted(connection_dict[key_to_expand])
             for l in opened_nodes:
@@ -177,6 +175,33 @@ def General_Search(connection_dict, search_method, heuristic_dict):
                         return -1
                 if level_reached(queue, w):
                     queue = beam_queue(queue, w, heuristic_dict)
+
+        elif search_method == "HCS":
+            opened_nodes = sorted(connection_dict[key_to_expand])
+            for l in opened_nodes:
+                if l != 'S' and l not in popped:
+                    items_to_insert = [l] + popped
+                    # print items_to_insert
+                    queue.append(items_to_insert)
+                    # print "inside = ", queue
+                # print "Out=", queue
+                def h_comparator(list1, list2):
+                    if float(heuristic_dict[list1[0]]) > float(heuristic_dict[list2[0]]):
+                        return 1
+                    elif float(heuristic_dict[list1[0]]) < float(heuristic_dict[list2[0]]):
+                        return -1
+                    else:
+                        if list1[0] == list2[0]:
+                            if len(list1) > len(list2):
+                                return 1
+                            else:
+                                return -1
+
+                        elif list1[0] > list2[0]:
+                            return 1
+                        return -1
+                if level_reached(queue, 1):
+                    queue = beam_queue(queue, 1, heuristic_dict)
 
         if l_state_change:
             queue = [['S']]
@@ -251,7 +276,7 @@ def print_queue_state(queue, connection_dict, search_method, l_state_change, idl
         if len(queue) != 0:
             print "Expanded = ", queue[0][0]
             print "Queue = ", queue
-    elif search_method in ["UCS", "GS", "A*", "Beam Search"]:
+    elif search_method in ["UCS", "GS", "A*", "Beam Search", "HCS"]:
         if len(queue) != 0:
             print "Expanded =", queue[0][0]
 
@@ -291,6 +316,18 @@ def print_queue_state(queue, connection_dict, search_method, l_state_change, idl
                     string_print = string_print + '<' + str(current_cost_of_path) + '' + str(current_path) + '>, '
 
                 print '[' + string_print[:-2] + ']'
+
+            elif search_method == "HCS":
+                string_print = ''
+                for idx in range(len(queue)):
+                    current_path = queue[idx]
+                    current_cost_of_path = heuristic_cost_of_path(current_path, heuristic_dict)
+                    string_print = string_print + '<' + str(current_cost_of_path) + '' + str(current_path) + '>, '
+
+                print '[' + string_print[:-2] + ']'
+
+
+
 
 
 

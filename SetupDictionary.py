@@ -2,7 +2,9 @@ import numpy
 import os, sys
 from General_Search import General_Search
 
-graph_file = "graph.txt"
+# graph_file = "graph.txt"
+# graph_file = "BonusGraph.txt"
+graph_file = "second_graph.txt"
 changes_txt_file = open(graph_file)
 the_read_file = changes_txt_file.readlines()
 
@@ -22,13 +24,6 @@ for i in range(0, len(lines)):
 
 del heuristic_list[0]
 del heuristic_list[-1]
-# print "Final list of graph = \n", lines, "\n"
-# print "Connection List = \n", connection_list, "\n"
-# print "Heuristic List = \n", heuristic_list, "\n"
-
-##
-# Defining Heuristic  and Connection Dictionary
-#Makes the hashmap aka dictionary in the python
 
 heuristic_dict = {}
 for i in range(0, len(heuristic_list)):
@@ -70,7 +65,7 @@ for i in range(0, len(connection_list)):
 print "Connection Dictionary = \n", connection_dict, "\n"
 # print connection_dict['A'][0][1]
 
-the_list = ["DFS", "BFS", "DLS", "IDS", "UCS", "GS", "A*", "Beam Search"]
+the_list = ["DFS", "BFS", "DLS", "IDS", "UCS", "GS", "A*", "Beam Search", "HCS"]
 for item in the_list:
     print item
     General_Search(connection_dict, item, heuristic_dict=heuristic_dict)
