@@ -1,0 +1,262 @@
+Printing from  graph.txt ...
+
+Heuristic Dictionary = 
+{'A': '10.4', 'C': '4.0', 'B': '6.7', 'E': '6.9', 'D': '8.9', 'G': 0.0, 'F': '3.0', 'S': '11.0'}
+Connection Dictionary = 
+{'A': {'S': '3.0', 'B': '4.0', 'D': '5.0'}, 'C': {'B': '4.0'}, 'B': {'A': '4.0', 'C': '4.0', 'E': '5.0'}, 'E': {'B': '5.0', 'D': '2.0', 'F': '4.0'}, 'D': {'A': '5.0', 'S': '4.0', 'E': '2.0'}, 'G': {'F': '3.0'}, 'F': {'E': '4.0', 'G': '3.0'}, 'S': {'A': '3.0', 'D': '4.0'}} 
+
+DFS
+Expanded =  S
+Queue = [['S']]
+Expanded =  A
+Queue =  [['A', 'S'], ['D', 'S']]
+Expanded =  B
+Queue =  [['B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  C
+Queue =  [['C', 'B', 'A', 'S'], ['E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  E
+Queue =  [['E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  D
+Queue =  [['D', 'E', 'B', 'A', 'S'], ['F', 'E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  F
+Queue =  [['F', 'E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  G
+Queue =  [['G', 'F', 'E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Goal Found! 
+
+
+
+BFS
+Expanded =  S
+Queue = [['S']]
+Expanded =  A
+Queue =  [['A', 'S'], ['D', 'S']]
+Expanded =  D
+Queue =  [['D', 'S'], ['B', 'A', 'S'], ['D', 'A', 'S']]
+Expanded =  B
+Queue =  [['B', 'A', 'S'], ['D', 'A', 'S'], ['A', 'D', 'S'], ['E', 'D', 'S']]
+Expanded =  D
+Queue =  [['D', 'A', 'S'], ['A', 'D', 'S'], ['E', 'D', 'S'], ['C', 'B', 'A', 'S'], ['E', 'B', 'A', 'S']]
+Expanded =  A
+Queue =  [['A', 'D', 'S'], ['E', 'D', 'S'], ['C', 'B', 'A', 'S'], ['E', 'B', 'A', 'S'], ['E', 'D', 'A', 'S']]
+Expanded =  E
+Queue =  [['E', 'D', 'S'], ['C', 'B', 'A', 'S'], ['E', 'B', 'A', 'S'], ['E', 'D', 'A', 'S'], ['B', 'A', 'D', 'S']]
+Expanded =  C
+Queue =  [['C', 'B', 'A', 'S'], ['E', 'B', 'A', 'S'], ['E', 'D', 'A', 'S'], ['B', 'A', 'D', 'S'], ['B', 'E', 'D', 'S'], ['F', 'E', 'D', 'S']]
+Expanded =  E
+Queue =  [['E', 'B', 'A', 'S'], ['E', 'D', 'A', 'S'], ['B', 'A', 'D', 'S'], ['B', 'E', 'D', 'S'], ['F', 'E', 'D', 'S']]
+Expanded =  E
+Queue =  [['E', 'D', 'A', 'S'], ['B', 'A', 'D', 'S'], ['B', 'E', 'D', 'S'], ['F', 'E', 'D', 'S'], ['D', 'E', 'B', 'A', 'S'], ['F', 'E', 'B', 'A', 'S']]
+Expanded =  B
+Queue =  [['B', 'A', 'D', 'S'], ['B', 'E', 'D', 'S'], ['F', 'E', 'D', 'S'], ['D', 'E', 'B', 'A', 'S'], ['F', 'E', 'B', 'A', 'S'], ['B', 'E', 'D', 'A', 'S'], ['F', 'E', 'D', 'A', 'S']]
+Expanded =  B
+Queue =  [['B', 'E', 'D', 'S'], ['F', 'E', 'D', 'S'], ['D', 'E', 'B', 'A', 'S'], ['F', 'E', 'B', 'A', 'S'], ['B', 'E', 'D', 'A', 'S'], ['F', 'E', 'D', 'A', 'S'], ['C', 'B', 'A', 'D', 'S'], ['E', 'B', 'A', 'D', 'S']]
+Expanded =  F
+Queue =  [['F', 'E', 'D', 'S'], ['D', 'E', 'B', 'A', 'S'], ['F', 'E', 'B', 'A', 'S'], ['B', 'E', 'D', 'A', 'S'], ['F', 'E', 'D', 'A', 'S'], ['C', 'B', 'A', 'D', 'S'], ['E', 'B', 'A', 'D', 'S'], ['A', 'B', 'E', 'D', 'S'], ['C', 'B', 'E', 'D', 'S']]
+Expanded =  D
+Queue =  [['D', 'E', 'B', 'A', 'S'], ['F', 'E', 'B', 'A', 'S'], ['B', 'E', 'D', 'A', 'S'], ['F', 'E', 'D', 'A', 'S'], ['C', 'B', 'A', 'D', 'S'], ['E', 'B', 'A', 'D', 'S'], ['A', 'B', 'E', 'D', 'S'], ['C', 'B', 'E', 'D', 'S'], ['G', 'F', 'E', 'D', 'S']]
+Expanded =  F
+Queue =  [['F', 'E', 'B', 'A', 'S'], ['B', 'E', 'D', 'A', 'S'], ['F', 'E', 'D', 'A', 'S'], ['C', 'B', 'A', 'D', 'S'], ['E', 'B', 'A', 'D', 'S'], ['A', 'B', 'E', 'D', 'S'], ['C', 'B', 'E', 'D', 'S'], ['G', 'F', 'E', 'D', 'S']]
+Expanded =  B
+Queue =  [['B', 'E', 'D', 'A', 'S'], ['F', 'E', 'D', 'A', 'S'], ['C', 'B', 'A', 'D', 'S'], ['E', 'B', 'A', 'D', 'S'], ['A', 'B', 'E', 'D', 'S'], ['C', 'B', 'E', 'D', 'S'], ['G', 'F', 'E', 'D', 'S'], ['G', 'F', 'E', 'B', 'A', 'S']]
+Expanded =  F
+Queue =  [['F', 'E', 'D', 'A', 'S'], ['C', 'B', 'A', 'D', 'S'], ['E', 'B', 'A', 'D', 'S'], ['A', 'B', 'E', 'D', 'S'], ['C', 'B', 'E', 'D', 'S'], ['G', 'F', 'E', 'D', 'S'], ['G', 'F', 'E', 'B', 'A', 'S'], ['C', 'B', 'E', 'D', 'A', 'S']]
+Expanded =  C
+Queue =  [['C', 'B', 'A', 'D', 'S'], ['E', 'B', 'A', 'D', 'S'], ['A', 'B', 'E', 'D', 'S'], ['C', 'B', 'E', 'D', 'S'], ['G', 'F', 'E', 'D', 'S'], ['G', 'F', 'E', 'B', 'A', 'S'], ['C', 'B', 'E', 'D', 'A', 'S'], ['G', 'F', 'E', 'D', 'A', 'S']]
+Expanded =  E
+Queue =  [['E', 'B', 'A', 'D', 'S'], ['A', 'B', 'E', 'D', 'S'], ['C', 'B', 'E', 'D', 'S'], ['G', 'F', 'E', 'D', 'S'], ['G', 'F', 'E', 'B', 'A', 'S'], ['C', 'B', 'E', 'D', 'A', 'S'], ['G', 'F', 'E', 'D', 'A', 'S']]
+Expanded =  A
+Queue =  [['A', 'B', 'E', 'D', 'S'], ['C', 'B', 'E', 'D', 'S'], ['G', 'F', 'E', 'D', 'S'], ['G', 'F', 'E', 'B', 'A', 'S'], ['C', 'B', 'E', 'D', 'A', 'S'], ['G', 'F', 'E', 'D', 'A', 'S'], ['F', 'E', 'B', 'A', 'D', 'S']]
+Expanded =  C
+Queue =  [['C', 'B', 'E', 'D', 'S'], ['G', 'F', 'E', 'D', 'S'], ['G', 'F', 'E', 'B', 'A', 'S'], ['C', 'B', 'E', 'D', 'A', 'S'], ['G', 'F', 'E', 'D', 'A', 'S'], ['F', 'E', 'B', 'A', 'D', 'S']]
+Expanded =  G
+Queue =  [['G', 'F', 'E', 'D', 'S'], ['G', 'F', 'E', 'B', 'A', 'S'], ['C', 'B', 'E', 'D', 'A', 'S'], ['G', 'F', 'E', 'D', 'A', 'S'], ['F', 'E', 'B', 'A', 'D', 'S']]
+Goal Found! 
+
+
+
+DLS
+Expanded =  S
+Queue = [['S']]
+Expanded =  A
+Queue =  [['A', 'S'], ['D', 'S']]
+Expanded =  B
+Queue =  [['B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  D
+Queue =  [['D', 'A', 'S'], ['D', 'S']]
+Expanded =  D
+Queue =  [['D', 'S']]
+Expanded =  A
+Queue =  [['A', 'D', 'S'], ['E', 'D', 'S']]
+Expanded =  E
+Queue =  [['E', 'D', 'S']]
+
+
+IDS
+L = 0
+Expanded =  S
+Queue = [['S']]
+
+
+L = 1
+Expanded =  S
+Queue =  [['S']]
+Expanded =  A
+Queue =  [['A', 'S'], ['D', 'S']]
+
+
+L = 2
+Expanded =  S
+Queue =  [['S']]
+Expanded =  A
+Queue =  [['A', 'S'], ['D', 'S']]
+Expanded =  B
+Queue =  [['B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+
+
+L = 3
+Expanded =  S
+Queue =  [['S']]
+Expanded =  A
+Queue =  [['A', 'S'], ['D', 'S']]
+Expanded =  B
+Queue =  [['B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  C
+Queue =  [['C', 'B', 'A', 'S'], ['E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+
+
+L = 4
+Expanded =  S
+Queue =  [['S']]
+Expanded =  A
+Queue =  [['A', 'S'], ['D', 'S']]
+Expanded =  B
+Queue =  [['B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  C
+Queue =  [['C', 'B', 'A', 'S'], ['E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  E
+Queue =  [['E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  D
+Queue =  [['D', 'E', 'B', 'A', 'S'], ['F', 'E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+
+
+L = 5
+Expanded =  S
+Queue =  [['S']]
+Expanded =  A
+Queue =  [['A', 'S'], ['D', 'S']]
+Expanded =  B
+Queue =  [['B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  C
+Queue =  [['C', 'B', 'A', 'S'], ['E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  E
+Queue =  [['E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  D
+Queue =  [['D', 'E', 'B', 'A', 'S'], ['F', 'E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  F
+Queue =  [['F', 'E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Expanded =  G
+Queue =  [['G', 'F', 'E', 'B', 'A', 'S'], ['D', 'A', 'S'], ['D', 'S']]
+Goal Found! 
+
+
+
+UCS
+Expanded =  S
+Queue =  [<11.0['S']>]
+Expanded = A
+[<3.0['A', 'S']>, <4.0['D', 'S']>]
+Expanded = D
+[<4.0['D', 'S']>, <7.0['B', 'A', 'S']>, <8.0['D', 'A', 'S']>]
+Expanded = E
+[<6.0['E', 'D', 'S']>, <7.0['B', 'A', 'S']>, <8.0['D', 'A', 'S']>, <9.0['A', 'D', 'S']>]
+Expanded = B
+[<7.0['B', 'A', 'S']>, <8.0['D', 'A', 'S']>, <9.0['A', 'D', 'S']>, <10.0['F', 'E', 'D', 'S']>, <11.0['B', 'E', 'D', 'S']>]
+Expanded = D
+[<8.0['D', 'A', 'S']>, <9.0['A', 'D', 'S']>, <10.0['F', 'E', 'D', 'S']>, <11.0['B', 'E', 'D', 'S']>, <11.0['C', 'B', 'A', 'S']>, <12.0['E', 'B', 'A', 'S']>]
+Expanded = A
+[<9.0['A', 'D', 'S']>, <10.0['E', 'D', 'A', 'S']>, <10.0['F', 'E', 'D', 'S']>, <11.0['B', 'E', 'D', 'S']>, <11.0['C', 'B', 'A', 'S']>, <12.0['E', 'B', 'A', 'S']>]
+Expanded = E
+[<10.0['E', 'D', 'A', 'S']>, <10.0['F', 'E', 'D', 'S']>, <11.0['B', 'E', 'D', 'S']>, <11.0['C', 'B', 'A', 'S']>, <12.0['E', 'B', 'A', 'S']>, <13.0['B', 'A', 'D', 'S']>]
+Expanded = F
+[<10.0['F', 'E', 'D', 'S']>, <11.0['B', 'E', 'D', 'S']>, <11.0['C', 'B', 'A', 'S']>, <12.0['E', 'B', 'A', 'S']>, <13.0['B', 'A', 'D', 'S']>, <14.0['F', 'E', 'D', 'A', 'S']>, <15.0['B', 'E', 'D', 'A', 'S']>]
+Expanded = B
+[<11.0['B', 'E', 'D', 'S']>, <11.0['C', 'B', 'A', 'S']>, <12.0['E', 'B', 'A', 'S']>, <13.0['B', 'A', 'D', 'S']>, <13.0['G', 'F', 'E', 'D', 'S']>, <14.0['F', 'E', 'D', 'A', 'S']>, <15.0['B', 'E', 'D', 'A', 'S']>]
+Expanded = C
+[<11.0['C', 'B', 'A', 'S']>, <12.0['E', 'B', 'A', 'S']>, <13.0['B', 'A', 'D', 'S']>, <13.0['G', 'F', 'E', 'D', 'S']>, <14.0['F', 'E', 'D', 'A', 'S']>, <15.0['A', 'B', 'E', 'D', 'S']>, <15.0['B', 'E', 'D', 'A', 'S']>, <15.0['C', 'B', 'E', 'D', 'S']>]
+Expanded = E
+[<12.0['E', 'B', 'A', 'S']>, <13.0['B', 'A', 'D', 'S']>, <13.0['G', 'F', 'E', 'D', 'S']>, <14.0['F', 'E', 'D', 'A', 'S']>, <15.0['A', 'B', 'E', 'D', 'S']>, <15.0['B', 'E', 'D', 'A', 'S']>, <15.0['C', 'B', 'E', 'D', 'S']>]
+Expanded = B
+[<13.0['B', 'A', 'D', 'S']>, <13.0['G', 'F', 'E', 'D', 'S']>, <14.0['D', 'E', 'B', 'A', 'S']>, <14.0['F', 'E', 'D', 'A', 'S']>, <15.0['A', 'B', 'E', 'D', 'S']>, <15.0['B', 'E', 'D', 'A', 'S']>, <15.0['C', 'B', 'E', 'D', 'S']>, <16.0['F', 'E', 'B', 'A', 'S']>]
+Expanded = G
+[<13.0['G', 'F', 'E', 'D', 'S']>, <14.0['D', 'E', 'B', 'A', 'S']>, <14.0['F', 'E', 'D', 'A', 'S']>, <15.0['A', 'B', 'E', 'D', 'S']>, <15.0['B', 'E', 'D', 'A', 'S']>, <15.0['C', 'B', 'E', 'D', 'S']>, <16.0['F', 'E', 'B', 'A', 'S']>, <17.0['C', 'B', 'A', 'D', 'S']>, <18.0['E', 'B', 'A', 'D', 'S']>]
+Goal Found! 
+
+
+
+GS
+Expanded =  S
+Queue =  [<11.0['S']>]
+Expanded = D
+[<8.9['D', 'S']>, <10.4['A', 'S']>]
+Expanded = E
+[<6.9['E', 'D', 'S']>, <10.4['A', 'S']>, <10.4['A', 'D', 'S']>]
+Expanded = F
+[<3.0['F', 'E', 'D', 'S']>, <6.7['B', 'E', 'D', 'S']>, <10.4['A', 'S']>, <10.4['A', 'D', 'S']>]
+Expanded = G
+[<0.0['G', 'F', 'E', 'D', 'S']>, <6.7['B', 'E', 'D', 'S']>, <10.4['A', 'S']>, <10.4['A', 'D', 'S']>]
+Goal Found! 
+
+
+
+A*
+Expanded =  S
+Queue =  [<11.0['S']>]
+Expanded = D
+[<12.9['D', 'S']>, <13.4['A', 'S']>]
+Expanded = E
+[<12.9['E', 'D', 'S']>, <13.4['A', 'S']>]
+Expanded = F
+[<13.0['F', 'E', 'D', 'S']>, <13.4['A', 'S']>, <17.7['B', 'E', 'D', 'S']>]
+Expanded = G
+[<13.0['G', 'F', 'E', 'D', 'S']>, <13.4['A', 'S']>, <17.7['B', 'E', 'D', 'S']>]
+Goal Found! 
+
+
+
+Beam Search
+Expanded =  S
+Queue =  [<11.0['S']>]
+Expanded = A
+[<10.4['A', 'S']>, <8.9['D', 'S']>]
+Expanded = D
+[<8.9['D', 'S']>, <6.7['B', 'A', 'S']>, <8.9['D', 'A', 'S']>]
+Expanded = B
+[<6.7['B', 'A', 'S']>, <6.9['E', 'D', 'S']>]
+Expanded = E
+[<6.9['E', 'D', 'S']>, <4.0['C', 'B', 'A', 'S']>, <6.9['E', 'B', 'A', 'S']>]
+Expanded = C
+[<4.0['C', 'B', 'A', 'S']>, <3.0['F', 'E', 'D', 'S']>]
+Expanded = F
+[<3.0['F', 'E', 'D', 'S']>]
+Expanded = G
+[<0.0['G', 'F', 'E', 'D', 'S']>]
+Goal Found! 
+
+
+
+HCS
+Expanded =  S
+Queue =  [<11.0['S']>]
+Expanded = D
+[<8.9['D', 'S']>]
+Expanded = E
+[<6.9['E', 'D', 'S']>]
+Expanded = F
+[<3.0['F', 'E', 'D', 'S']>]
+Expanded = G
+[<0.0['G', 'F', 'E', 'D', 'S']>]
+Goal Found! 
+
+
+

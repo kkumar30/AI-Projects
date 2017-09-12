@@ -1,14 +1,22 @@
 import numpy
 import os, sys
 from General_Search import General_Search
-print "Printing from ", sys.argv[1], "...\n"
+
+try:
+    if sys.argv[1]:
+        print "Printing from ", sys.argv[1], "...\n"
+except:
+    print "Text file not provided. Printing from graph.txt file.\n"
 # graph_file = "graph.txt"
 # graph_file = "BonusGraph.txt"
 # graph_file = "second_graph.txt"
-if sys.argv[1]:
-    graph_file = sys.argv[1]
-else:
+try:
+    if sys.argv[1]:
+        graph_file = sys.argv[1]
+        # print "Printing from ", sys.argv[1], "...\n"
+except:
     graph_file = "graph.txt"
+
 if ".txt" in graph_file:
     changes_txt_file = open(graph_file)
 else:
@@ -30,6 +38,7 @@ for i in range(0, len(lines)):
     elif flag == "":
         connection_list.append(lines[i])
 
+# print heuristic_list
 del heuristic_list[0]
 del heuristic_list[-1]
 
